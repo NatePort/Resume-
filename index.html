@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nathlan Brown | Media Planning &amp; Analytics</title>
+<meta name="description" content="Nathlan Brown is a media planner at Zenith (Publicis Groupe) who builds reporting that keeps large media budgets on pace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFBFC;
+    --surface: #FFFFFF;
+    --ink: #101C2C;
+    --muted: #56637A;
+    --line: #E1E6EE;
+    --accent: #0B6B66;
+    --accent-soft: rgba(11, 107, 102, 0.12);
+    --accent-ink: #FFFFFF;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Hanken Grotesk", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --gutter: clamp(20px, 4vw, 40px);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0C1522;
+      --surface: #111D2E;
+      --ink: #E9EEF5;
+      --muted: #9AA8BD;
+      --line: #223149;
+      --accent: #4FC3B8;
+      --accent-soft: rgba(79, 195, 184, 0.16);
+      --accent-ink: #0C1522;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C1522;
+    --surface: #111D2E;
+    --ink: #E9EEF5;
+    --muted: #9AA8BD;
+    --line: #223149;
+    --accent: #4FC3B8;
+    --accent-soft: rgba(79, 195, 184, 0.16);
+    --accent-ink: #0C1522;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; min-height: 60px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px;
+  }
+  .brand { font-family: var(--serif); font-size: 20px; font-weight: 600; text-decoration: none; letter-spacing: 0.1px; }
+  .site-nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+  .site-nav a { text-decoration: none; font-size: 15px; color: var(--muted); padding: 4px 0; }
+  .site-nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: clamp(48px, 8vw, 96px) 0 clamp(48px, 7vw, 80px); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+  h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(34px, 5vw, 56px); line-height: 1.08; letter-spacing: -0.015em;
+    margin: 0 0 24px; max-width: 18em;
+  }
+  .hero-sub { color: var(--muted); font-size: 18px; max-width: 34em; margin: 0 0 32px; }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 12px 20px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface);
+    transition: border-color .15s ease;
+  }
+  .btn:hover { border-color: var(--muted); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  .chart-panel {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 20px 16px;
+  }
+  .chart-title { font-weight: 600; font-size: 15px; margin: 0 0 2px; }
+  .chart-note { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+  .chart-panel svg { display: block; width: 100%; height: auto; }
+  .chart-panel text { font-family: var(--sans); fill: var(--muted); font-size: 12px; }
+  .chart-panel .strong { fill: var(--ink); font-weight: 600; }
+  .grid-line { stroke: var(--line); stroke-width: 1; }
+  .plan-line { stroke: var(--muted); stroke-width: 1.75; stroke-dasharray: 5 5; fill: none; }
+  .actual-line { stroke: var(--accent); stroke-width: 2.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .band { fill: var(--accent-soft); }
+  .flag-dot { fill: var(--surface); stroke: var(--accent); stroke-width: 2.5; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { display: inline-block; width: 22px; height: 0; border-top: 3px solid var(--accent); }
+  .legend i.dash { border-top: 2px dashed var(--muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .actual-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.8s cubic-bezier(.4,.1,.2,1) .3s forwards; }
+    .band, .flag-dot, .flag-label { opacity: 0; animation: show .5s ease 1.7s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes show { to { opacity: 1; } }
+  }
+
+  /* Sections */
+  section.block { border-top: 1px solid var(--line); padding: clamp(40px, 6vw, 72px) 0; }
+  .block-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0; letter-spacing: -0.005em; }
+  .prose p { margin: 0 0 16px; max-width: 38em; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  .workstreams { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .workstreams li { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+
+  .entry { padding: 0 0 36px; margin: 0 0 36px; border-bottom: 1px solid var(--line); }
+  .entry:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .entry h3 { font-family: var(--sans); font-weight: 600; font-size: 19px; margin: 0 0 4px; line-height: 1.35; }
+  .meta { color: var(--muted); font-size: 15px; margin: 0 0 16px; }
+  .facts { margin: 0; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 24px; }
+  .facts dt { color: var(--muted); font-size: 15px; }
+  .facts dd { margin: 0; max-width: 38em; }
+
+  .proj-link { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .proj-link:hover { text-decoration: underline; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 24px; padding: 0 0 28px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline .when { color: var(--muted); font-size: 15px; padding-top: 3px; }
+  .timeline .role { font-weight: 600; margin: 0; }
+  .timeline .where { color: var(--muted); margin: 0 0 6px; font-size: 15px; }
+  .timeline .what { margin: 0; max-width: 38em; }
+
+  .skill-groups { display: grid; gap: 28px; }
+  .skill-groups h3 { font-family: var(--sans); font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+  .skill-groups p { margin: 0; max-width: 40em; }
+
+  .contact-mail {
+    font-family: var(--serif); font-size: clamp(26px, 4vw, 40px); font-weight: 500;
+    text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 2px; overflow-wrap: anywhere;
+  }
+  .contact-mail:hover { color: var(--accent); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .block-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .facts, .timeline li { grid-template-columns: 1fr; gap: 2px; }
+    .facts dd { margin-bottom: 12px; }
+    .site-nav { gap: 2px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Nathlan Brown</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#current-work">Current work</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>I help manage $600M+ in Walmart media spend and build the reporting that keeps it on pace.</h1>
+        <p class="hero-sub"><strong>Nathlan Brown</strong>, Planner, Strategy at Zenith (Publicis Groupe) in New York. I work in Excel, SQL, and Power BI, and I am Google Data Analytics certified.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:nb2856380@gmail.com">Email Nathlan</a>
+          <a class="btn" href="https://www.linkedin.com/in/nathlan-brown-2834881b6/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+        </div>
+      </div>
+
+      <figure class="chart-panel" style="margin:0">
+        <figcaption>
+          <p class="chart-title">Cumulative spend vs. plan, 13 weeks</p>
+          <p class="chart-note">Illustrative example of a pacing view. Not client data.</p>
+        </figcaption>
+        <svg viewBox="0 0 520 330" role="img" aria-labelledby="chart-t chart-d">
+          <title id="chart-t">Cumulative spend versus plan</title>
+          <desc id="chart-d">A line chart over 13 weeks. Actual spend falls behind the planned line until week 6, where underpacing is flagged and budget is shifted. Actual spend then catches up and finishes on plan.</desc>
+
+          <line class="grid-line" x1="48" y1="280" x2="500" y2="280"/>
+          <line class="grid-line" x1="48" y1="170" x2="500" y2="170"/>
+          <line class="grid-line" x1="48" y1="60" x2="500" y2="60"/>
+          <text x="40" y="284" text-anchor="end">0%</text>
+          <text x="40" y="174" text-anchor="end">50%</text>
+          <text x="40" y="64" text-anchor="end">100%</text>
+          <text x="48" y="302">Week 1</text>
+          <text x="500" y="302" text-anchor="end">Week 13</text>
+
+          <polygon class="band" points="48,280 82.8,263.1 117.5,246.2 152.3,229.2 187.1,212.3 221.8,195.4 256.6,178.5 291.4,161.5 326.2,144.6 360.9,127.7 395.7,110.8 430.5,93.8 465.2,76.9 500,60 465.2,75.4 430.5,93 395.7,115 360.9,134.8 326.2,159 291.4,187.6 256.6,211.8 221.8,220.6 187.1,231.6 152.3,240.4 117.5,251.4 82.8,266.8 48,280"/>
+          <polyline class="plan-line" points="48,280 82.8,263.1 117.5,246.2 152.3,229.2 187.1,212.3 221.8,195.4 256.6,178.5 291.4,161.5 326.2,144.6 360.9,127.7 395.7,110.8 430.5,93.8 465.2,76.9 500,60"/>
+          <polyline class="actual-line" pathLength="1" points="48,280 82.8,266.8 117.5,251.4 152.3,240.4 187.1,231.6 221.8,220.6 256.6,211.8 291.4,187.6 326.2,159 360.9,134.8 395.7,115 430.5,93 465.2,75.4 500,60"/>
+
+          <circle class="flag-dot" cx="256.6" cy="211.8" r="5.5"/>
+          <g class="flag-label">
+            <text class="strong" x="266" y="238">Underpacing flagged</text>
+            <text x="266" y="254">Budget shifted to catch up</text>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i class="dash"></i>Plan</span>
+          <span><i></i>Actual</span>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="current-work">
+    <div class="wrap block-grid">
+      <h2>Current work</h2>
+      <div class="prose">
+        <p>At Zenith I work on the Walmart account across five workstreams. I help manage more than $600M in media spend, coordinate campaign execution with cross-functional teams, and make sure reporting is accurate and delivered on time.</p>
+        <p>I design and build the reporting tools that track KPIs, budget pacing, and campaign performance across all five workstreams. I also analyze performance across 10+ media campaigns and turn the results into optimization recommendations that inform planning decisions. I plan and benchmark in Guideline MediaTools.</p>
+        <ul class="workstreams" aria-label="Workstreams">
+          <li>Savviness</li>
+          <li>Ease</li>
+          <li>Sparky</li>
+          <li>Mobile app</li>
+          <li>Rx delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap block-grid">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">Current</span>
+          <div>
+            <p class="role">Planner, Strategy</p>
+            <p class="where">Zenith, Publicis Groupe. Manhattan, NY</p>
+            <p class="what">Walmart account planning, campaign execution, and performance reporting.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Seasonal</span>
+          <div>
+            <p class="role">Senior CA</p>
+            <p class="where">Intuit TurboTax. Manhattan, NY</p>
+            <p class="what">Reviewed client financial documents to find discrepancies and resolve errors, handling 30 to 50+ client cases per shift and escalating complex cases to specialists.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">April 2025 to July 2026</span>
+          <div>
+            <p class="role">Geek Squad CA</p>
+            <p class="where">Best Buy. Baldwin, NY</p>
+            <p class="what">Worked with internal teams and OEM partners such as Apple and Samsung on warranty claims and part replacements, and tracked product performance and service metrics in CRM tools.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap block-grid">
+      <h2>Projects</h2>
+      <div>
+        <article class="entry">
+          <h3>Branch Sales &amp; Employee Performance Dashboard</h3>
+          <p class="meta">Virtual client project, Brooklyn, NY. July 2024. Power BI, MySQL, Excel.</p>
+          <dl class="facts">
+            <dt>The question</dt>
+            <dd>How do sales and employee engagement compare across branches, and where should market spending and resources go?</dd>
+            <dt>What I did</dt>
+            <dd>Built an interactive Power BI dashboard comparing sales, engagement, employee performance, and benefits across branches. Cleaned and validated the client data in MySQL and Excel for completeness and accuracy.</dd>
+            <dt>What came out of it</dt>
+            <dd>Insights that guided market spending and resource allocation, plus recommendations to improve sales strategy and employee engagement metrics.</dd>
+          </dl>
+        </article>
+
+        <article class="entry">
+          <h3>Customer Sales Analysis</h3>
+          <p class="meta">Intern project, Brooklyn, NY. November 2020. MySQL, Power BI.</p>
+          <dl class="facts">
+            <dt>The question</dt>
+            <dd>What do customer sales look like across a set of related client datasets, and can the reporting be made cleaner and faster?</dd>
+            <dt>What I did</dt>
+            <dd>Extracted and joined data from eight related SQL tables. Used aggregation and filtering to clean and transform large datasets, then built Power BI visualizations on top.</dd>
+            <dt>What came out of it</dt>
+            <dd>Trends that improved reporting efficiency and sales outcomes.</dd>
+          </dl>
+        </article>
+
+        <article class="entry">
+          <h3>Walmart Sales Data Analysis</h3>
+          <p class="meta">Personal project. SQL.</p>
+          <dl class="facts">
+            <dt>What I did</dt>
+            <dd>Gathered, cleaned, and organized Walmart sales data so a sales team could make well-informed decisions from it.</dd>
+          </dl>
+          <a class="proj-link" href="https://github.com/NatePort/Nate_Data_Cleaning/blob/main/walmart%20analysis.sql" target="_blank" rel="noopener noreferrer">View the SQL on GitHub &rarr;</a>
+        </article>
+
+        <article class="entry">
+          <h3>Data Cleaning in SQL</h3>
+          <p class="meta">Personal project. SQL.</p>
+          <dl class="facts">
+            <dt>What I did</dt>
+            <dd>Cleaned a housing dataset full of duplicate records, nulls, and other data quality problems, leaving it ready for analysis.</dd>
+          </dl>
+          <a class="proj-link" href="https://github.com/NatePort/Nate_Data_Cleaning/blob/main/housing.sql" target="_blank" rel="noopener noreferrer">View the SQL on GitHub &rarr;</a>
+        </article>
+
+        <article class="entry">
+          <h3>Data Professional Survey Dashboard</h3>
+          <p class="meta">Personal project. Power BI.</p>
+          <dl class="facts">
+            <dt>What I did</dt>
+            <dd>Built a Power BI dashboard from messy, uncleaned survey data on data professionals, cleaning it along the way.</dd>
+          </dl>
+          <a class="proj-link" href="https://github.com/NatePort/Power_BI-Data-Professional-/blob/main/Data%20Professional%20Survey.pdf" target="_blank" rel="noopener noreferrer">View the dashboard (PDF) &rarr;</a>
+        </article>
+
+        <article class="entry">
+          <h3>Bike Share Visualization</h3>
+          <p class="meta">Personal project. Power BI.</p>
+          <dl class="facts">
+            <dt>What I did</dt>
+            <dd>Built a bike share dashboard demonstrating core Power BI visualization skills.</dd>
+          </dl>
+          <a class="proj-link" href="https://github.com/NatePort/Power_BI_Visualisation/blob/main/Bike_Share_Visualisation.pdf" target="_blank" rel="noopener noreferrer">View the dashboard (PDF) &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap block-grid">
+      <h2>Skills and credentials</h2>
+      <div class="skill-groups">
+        <div>
+          <h3>Planning and analysis</h3>
+          <p>Campaign tracking, data visualization, media planning, KPI and budget pacing, Google Analytics.</p>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <p>Excel (pivot tables, VLOOKUP), Guideline MediaTools, Google Sheets, Docs and Slides, Power BI, SQL, MySQL, Python.</p>
+        </div>
+        <div>
+          <h3>Certifications</h3>
+          <p>Google Data Analytics (2024). Apple Certified, GSX (2024). CS50: Introduction to Computer Science (2025).</p>
+        </div>
+        <div>
+          <h3>Education and languages</h3>
+          <p>Associate in Business Administration (Business Analytics), graduating 2027. English (fluent) and Russian (intermediate).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap block-grid">
+      <h2>Contact</h2>
+      <div>
+        <p style="margin:0 0 20px;max-width:34em">I am open to roles in media planning, strategy, and analytics.</p>
+        <p style="margin:0 0 20px"><a class="contact-mail" href="mailto:nb2856380@gmail.com">nb2856380@gmail.com</a></p>
+        <p style="margin:0"><a href="https://www.linkedin.com/in/nathlan-brown-2834881b6/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a> &nbsp;·&nbsp; <a href="https://github.com/NatePort" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Nathlan Brown. Brooklyn, NY.</div>
+</footer>
+
+</body>
+</html>
